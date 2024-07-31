@@ -21,6 +21,7 @@ CollisionCallbacks {
           size: size ?? Vector2.all(32),
         );
 
+  bool _collected = false;
   final double stepTime = 0.05;
   final hitbox = CustomHitBox(
     offsetX: 8,
@@ -52,5 +53,19 @@ CollisionCallbacks {
       ),
     );
     return super.onLoad();
+  }
+  void collidedWithPlayer() {
+    if(!_collected) {
+      animation = SpriteAnimation.fromFrameData(
+        game.images.fromCache('Items/Fruits/Collected.png'),
+        SpriteAnimationData.sequenced(
+          amount: 6,
+          stepTime: stepTime,
+          textureSize: Vector2.all(32),
+        ),
+      );
+      _collected = true;
+    }
+    // removeFromParent();
   }
 }

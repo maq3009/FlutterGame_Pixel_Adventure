@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:pixel_adventure/components/collision_block.dart';
 import 'package:pixel_adventure/components/custom_hitbox.dart';
+import 'package:pixel_adventure/components/fruit.dart';
 import 'package:pixel_adventure/components/utils.dart';
 import 'package:pixel_adventure/pixel_adventure.dart';
 
@@ -31,7 +31,7 @@ class Player extends SpriteAnimationGroupComponent
   final double stepTime = 0.05;
   final double keyboardMoveSpeed = 0.5;
   final double _gravity = 9.8;
-  final double _jumpForce = 250;
+  final double _jumpForce = 350;
   final double _terminalVelocity = 100;
 
   PlayerDirection playerDirection = PlayerDirection.none;
@@ -90,6 +90,15 @@ class Player extends SpriteAnimationGroupComponent
 
   return super.onKeyEvent(event, keysPressed);
  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is Fruit) other.collidedWithPlayer();
+    
+    
+    super.onCollision(intersectionPoints, other);
+  }
+
 
   void _loadAllAnimations() {
     idleAnimation = _spriteAnimation('Idle', 11);
