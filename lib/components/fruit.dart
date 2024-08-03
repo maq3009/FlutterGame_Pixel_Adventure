@@ -62,10 +62,14 @@ CollisionCallbacks {
           amount: 6,
           stepTime: stepTime,
           textureSize: Vector2.all(32),
+          loop: false,
         ),
       );
       _collected = true;
     }
+    Future.delayed(const Duration(milliseconds: 400),
+      () => removeFromParent(),
+    );
     // removeFromParent();
   }
 }

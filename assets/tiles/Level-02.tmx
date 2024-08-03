@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="20">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Tile Layer 1" width="40" height="23">
   <data encoding="csv">
@@ -28,4 +28,37 @@
 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24
 </data>
  </layer>
+ <objectgroup id="2" name="Spawnpoints">
+  <object id="3" type="Saw" x="161.496" y="122.531" width="38.9657" height="38.0268">
+   <properties>
+    <property name="isVertical" type="bool" value="false"/>
+    <property name="offNeg" type="float" value="4"/>
+    <property name="offPos" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="4" type="Saw" x="496.695" y="143.187" width="42.252" height="43.1909">
+   <properties>
+    <property name="isVertical" type="bool" value="false"/>
+    <property name="offNeg" type="float" value="4"/>
+    <property name="offPos" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="5" name="Player" type="Player" x="352.569" y="142.718" width="32.8626" height="33.3321"/>
+ </objectgroup>
+ <objectgroup id="3" name="Collisions">
+  <object id="6" x="45.0688" y="35.6794" width="552.092" height="11.2672"/>
+  <object id="7" x="577.913" y="33.3321" width="20.6565" height="292.008"/>
+  <object id="8" x="41.7825" y="30.5153" width="22.0649" height="292.947"/>
+  <object id="9" x="59.6222" y="254.92" width="245.061" height="60.0917"/>
+  <object id="10" x="399.516" y="254.92" width="192.951" height="58.6833"/>
+  <object id="11" x="303.745" y="288.722" width="98.1185" height="25.3512"/>
+  <object id="12" type="Platform" x="351.161" y="176.05" width="18.3092" height="64.7864"/>
+  <object id="13" type="Platform" x="320.176" y="223.935" width="49.7634" height="16.9008"/>
+  <object id="14" type="Platform" x="351.63" y="175.58" width="64.7864" height="16.9008"/>
+  <object id="15" type="Platform" x="175.111" y="159.619" width="17.8397" height="48.8245"/>
+  <object id="16" type="Platform" x="128.164" y="190.603" width="65.7253" height="18.7787"/>
+  <object id="17" type="Platform" x="175.111" y="160.088" width="64.7864" height="14.5535"/>
+  <object id="18" x="61.9696" y="223.466" width="18.7787" height="32.3932"/>
+  <object id="19" x="80.2787" y="239.428" width="15.0229" height="16.4313"/>
+ </objectgroup>
 </map>
