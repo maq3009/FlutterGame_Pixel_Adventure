@@ -4,21 +4,18 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:pixel_adventure/pixel_adventure.dart';
 
-class Saw extends SpriteAnimationComponent with HasGameRef<PixelAdventure>{
+class Saw extends SpriteAnimationComponent with HasGameRef<PixelAdventure> {
   final bool isVertical;
   final double offNeg;
   final double offPos;
+
   Saw({
     this.isVertical = false,
     this.offNeg = 0,
     this.offPos = 0,
-    position,
-    size,
-  
-  }) : super(
-    position: position,
-    size: size,
-  );
+    super.position,
+    super.size,
+  });
 
   static const double sawSpeed = 0.03;
   static const moveSpeed = 50;
@@ -33,9 +30,9 @@ class Saw extends SpriteAnimationComponent with HasGameRef<PixelAdventure>{
 
   @override
   FutureOr<void> onLoad() {
-    priority =  1;
+    priority =  5;
     add(CircleHitbox());
-    debugMode = true;
+    
 
     if(isVertical) {
       rangeNeg = position.y - offNeg * tileSize;

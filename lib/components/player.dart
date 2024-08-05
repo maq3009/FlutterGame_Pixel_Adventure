@@ -34,9 +34,9 @@ class Player extends SpriteAnimationGroupComponent
 
   final double stepTime = 0.05;
   final double keyboardMoveSpeed = 0.5;
-  final double _gravity = 9.8;
-  final double _jumpForce = 450;
-  final double _terminalVelocity = 200;
+  final double _gravity = 8.8;
+  final double _jumpForce = 650;
+  final double _terminalVelocity = 300;
 
   PlayerDirection playerDirection = PlayerDirection.none;
   double horizontalMovement = 0;
@@ -285,6 +285,7 @@ void _updatePlayerMovement(double dt) {
   void _respawn() {
     const hitDuration = Duration(milliseconds: 350);
     const appearingDuration = Duration(milliseconds: 350);
+    const canMoveDuration = Duration(milliseconds: 400);
     gotHit = true;
     // position = startingPosition;
     current = PlayerState.hit;
@@ -296,7 +297,7 @@ void _updatePlayerMovement(double dt) {
         velocity = Vector2.zero();
         position = startingPosition;
         _updatePlayerState();
-        gotHit = false;
+        Future.delayed(canMoveDuration, () => gotHit = false);
 
       });
     });

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="20">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="25">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
- <layer id="1" name="Tile Layer 1" width="40" height="23">
+ <layer id="1" name="Level-02" width="40" height="23">
   <data encoding="csv">
 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
@@ -29,21 +29,15 @@
 </data>
  </layer>
  <objectgroup id="2" name="Spawnpoints">
-  <object id="3" type="Saw" x="161.496" y="122.531" width="38.9657" height="38.0268">
+  <object id="3" type="Saw" x="161.496" y="120.184" width="38.9657" height="38.0268">
    <properties>
     <property name="isVertical" type="bool" value="false"/>
     <property name="offNeg" type="float" value="4"/>
     <property name="offPos" type="float" value="4"/>
    </properties>
   </object>
-  <object id="4" type="Saw" x="496.695" y="143.187" width="42.252" height="43.1909">
-   <properties>
-    <property name="isVertical" type="bool" value="false"/>
-    <property name="offNeg" type="float" value="4"/>
-    <property name="offPos" type="float" value="4"/>
-   </properties>
-  </object>
-  <object id="5" name="Player" type="Player" x="352.569" y="142.718" width="32.8626" height="33.3321"/>
+  <object id="5" name="Player" type="Player" x="352.569" y="140.84" width="32.8626" height="33.3321"/>
+  <object id="24" type="Checkpoint" x="498.028" y="188.649" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="3" name="Collisions">
   <object id="6" x="45.0688" y="35.6794" width="552.092" height="11.2672"/>

@@ -33,7 +33,7 @@ CollisionCallbacks {
   @override
   FutureOr<void> onLoad() async {
     debugMode = true;
-    priority = -1;
+    priority = 3;
 
     add(RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),

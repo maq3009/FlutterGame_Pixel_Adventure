@@ -21,11 +21,12 @@ class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCa
   FutureOr<void> onLoad() async {
     //Load all images into the cache
     await images.loadAllImages();
-  
+    priority = 1;
+
   @override
   final world = Level(
     player: player,
-    levelName: 'Level-02');
+    levelName: 'Level-01');
 
 
     cam = CameraComponent.withFixedResolution(
@@ -33,7 +34,7 @@ class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCa
       width: 640,
       height: 360);
     cam.viewfinder.anchor = Anchor.topLeft;
-    cam.priority = 1;
+    cam.priority = 11;
 
     addAll([cam, world]);
 
@@ -84,7 +85,7 @@ class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCa
         ),
       ),
       margin: const EdgeInsets.only(left:100, bottom: 100),
-      priority: 10000,
+      priority: 100,
       
     );
     add(joystick);
