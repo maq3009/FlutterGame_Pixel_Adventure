@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -11,11 +10,13 @@ import 'dart:async';
 class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
   @override
   Color backgroundColor() => const Color(0x0f211f30);
-  late final CameraComponent cam;
+  late CameraComponent cam;
   Player player = Player(character: 'Mask Dude');
   late JoystickComponent joystick;
   bool showJoystick = true;
-
+  List<String> levelNames = ['Level-01', 'Level-02', 'Level-03'];
+  int currentLevelIndex = 0;
+  Level? currentLevel;
 
   @override
   FutureOr<void> onLoad() async {
@@ -23,20 +24,8 @@ class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCa
     await images.loadAllImages();
     priority = 1;
 
-  @override
-  final world = Level(
-    player: player,
-    levelName: 'Level-01');
 
-
-    cam = CameraComponent.withFixedResolution(
-      world: world,
-      width: 640,
-      height: 360);
-    cam.viewfinder.anchor = Anchor.topLeft;
-    cam.priority = 11;
-
-    addAll([cam, world]);
+    _loadLevel();
 
     if(showJoystick) {
       addJoystick();
@@ -110,4 +99,39 @@ class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCa
     }
   }
 
+  void loadNextLevel() {
+    if(currentLevelIndex < levelNames.length - 1) {
+      currentLevelIndex++;
+      _loadLevel();
+    } else {  //no more levels, you're at the last level
+
+    }
+  }
+
+  void _loadLevel() {
+    Future.delayed(const Duration(milliseconds: 300), () {
+      if(currentLevel !=null) {
+        remove(currentLevel!);
+        remove(cam);
+      }
+      
+      
+      Level newLevel = Level(
+        player: player,
+        levelName: levelNames[currentLevelIndex],
+      );
+
+
+      cam = CameraComponent.withFixedResolution(
+        world: newLevel,
+        width: 640,
+        height: 360);
+      cam.viewfinder.anchor = Anchor.topLeft;
+      cam.priority = 11;
+
+      currentLevel = newLevel;
+      addAll([cam, newLevel]);
+
+    });
+  }
 }

@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:pixel_adventure/components/background_tile.dart';
 import 'package:pixel_adventure/components/checkpoint.dart';
-
 import 'package:pixel_adventure/components/collision_block.dart';
 import 'package:pixel_adventure/components/fruit.dart';
 import 'package:pixel_adventure/components/player.dart';
@@ -20,13 +18,13 @@ class Level extends World with HasGameRef<PixelAdventure> {
 
   @override
   FutureOr<void> onLoad() async {
-    level = await TiledComponent.load('$levelName.tmx', Vector2.all(16));
+    level = await TiledComponent.load('$levelName.tmx', Vector2.all(16));  //Loads the level with 16 pixel tiles
 
-    add(level);
+    add(level);  //actually adds the level to the scene
 
-    _scrollingBackground();
-    _spawningObjects();
-    _addCollisions();
+    _scrollingBackground();  //scrolling background
+    _spawningObjects();  //spawns the objects in the Spawnpoints layer in Tiled to the game
+    _addCollisions();  //add collision objects from the Collisions layer in Tiled
 
     return super.onLoad();
   }
