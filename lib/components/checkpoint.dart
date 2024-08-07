@@ -57,8 +57,6 @@ class Checkpoint extends SpriteAnimationComponent
 
     await animationTicker?.completed;
 
-    const flagDuration = Duration(milliseconds: 1300);
-    Future.delayed(flagDuration, () {
       animation = SpriteAnimation.fromFrameData(
         game.images.fromCache(
             'Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png'),
@@ -67,7 +65,6 @@ class Checkpoint extends SpriteAnimationComponent
           stepTime: 0.05,
           textureSize: Vector2.all(64),
           ),
-        );
-    });
+    );
   }
 }

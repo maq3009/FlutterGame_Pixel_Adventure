@@ -3,11 +3,17 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/painting.dart';
+import 'package:pixel_adventure/components/jump_button.dart';
 import 'package:pixel_adventure/components/player.dart';
 import 'package:pixel_adventure/components/level.dart';
 import 'dart:async';
 
-class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
+class PixelAdventure extends FlameGame
+  with
+    HasKeyboardHandlerComponents,
+    DragCallbacks,
+    HasCollisionDetection,
+    TapCallbacks {
   @override
   Color backgroundColor() => const Color(0x0f211f30);
   late CameraComponent cam;
@@ -78,6 +84,7 @@ class PixelAdventure extends FlameGame with HasKeyboardHandlerComponents, DragCa
       
     );
     add(joystick);
+    add(JumpButton());
   }
 
   void updateJoystick() {

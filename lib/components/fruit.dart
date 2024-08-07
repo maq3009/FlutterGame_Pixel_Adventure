@@ -21,7 +21,7 @@ CollisionCallbacks {
           size: size ?? Vector2.all(32),
         );
 
-  bool _collected = false;
+
   final double stepTime = 0.05;
   final hitbox = CustomHitBox(
     offsetX: 8,
@@ -32,7 +32,6 @@ CollisionCallbacks {
 
   @override
   FutureOr<void> onLoad() async {
-    debugMode = true;
     priority = 3;
 
     add(RectangleHitbox(
@@ -54,22 +53,18 @@ CollisionCallbacks {
     );
     return super.onLoad();
   }
-  void collidedWithPlayer() {
-    if(!_collected) {
-      animation = SpriteAnimation.fromFrameData(
-        game.images.fromCache('Items/Fruits/Collected.png'),
-        SpriteAnimationData.sequenced(
+  void collidedWithPlayer() async {
+    animation = SpriteAnimation.fromFrameData(
+      game.images.fromCache('Items/Fruits/Collected.png'),
+      SpriteAnimationData.sequenced(
           amount: 6,
           stepTime: stepTime,
           textureSize: Vector2.all(32),
           loop: false,
         ),
       );
-      _collected = true;
-    }
-    Future.delayed(const Duration(milliseconds: 400),
-      () => removeFromParent(),
-    );
-    // removeFromParent();
+
+    await animationTicker?.completed;
+    () => removeFromParent();
   }
 }
