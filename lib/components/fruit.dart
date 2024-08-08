@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:pixel_adventure/components/custom_hitbox.dart';
 import 'package:pixel_adventure/pixel_adventure.dart';
 
@@ -29,6 +30,7 @@ CollisionCallbacks {
     width: 12,
     height: 12,
   );
+  bool collected = false;
 
   @override
   FutureOr<void> onLoad() async {
@@ -54,6 +56,9 @@ CollisionCallbacks {
     return super.onLoad();
   }
   void collidedWithPlayer() async {
+    if (!collected) {
+    collected = true;
+    if (game.playSounds) FlameAudio.play('Fruit_Collected.wav', volume: game.soundVolume);
     animation = SpriteAnimation.fromFrameData(
       game.images.fromCache('Items/Fruits/Collected.png'),
       SpriteAnimationData.sequenced(
@@ -65,6 +70,7 @@ CollisionCallbacks {
       );
 
     await animationTicker?.completed;
-    () => removeFromParent();
+    removeFromParent();
   }
+}
 }

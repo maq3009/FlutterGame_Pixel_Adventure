@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flame: ^1.8.2
   flame_tiled: ^1.11.2
+  flame_audio: ^2.10.2
 
 dev_dependencies:
   flutter_test:
@@ -62,11 +63,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/audio/
     - assets/tiles/
     - assets/images/Terrain/
     - assets/images/Background/
     - assets/images/HUD/
     - assets/images/Traps/Saw/
+    - assets/images/Enemies/Chicken/
     - assets/images/Items/Checkpoints/Checkpoint/
     - assets/images/Items/Fruits/
     - assets/images/Main Characters/
